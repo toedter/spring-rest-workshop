@@ -1,4 +1,5 @@
 = REST Hypermedia Spring Workshop
+
 image:https://github.com/toedter/rest-hypermedia-spring-workshop/workflows/Build/badge.svg["build", link="https://github.com/toedter/rest-hypermedia-spring-workshop/actions"]
 image:http://img.shields.io/badge/license-MIT-blue.svg["MIT", link="http://toedter.mit-license.org"]
 
