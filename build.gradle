@@ -1,0 +1,28 @@
+plugins {
+    id 'org.springframework.boot' version '2.6.2'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'io.freefair.lombok' version '6.1.0'
+}
+
+allprojects {
+
+    apply plugin: 'idea'
+    apply plugin: 'eclipse'
+    
+    repositories {
+        mavenCentral()
+    }
+
+    task cleanJS() {
+        doLast {
+            delete 'node_modules'
+        }
+    }
+
+    idea {
+        module {
+            excludeDirs += file('node_modules')
+        }
+    }
+}
+
