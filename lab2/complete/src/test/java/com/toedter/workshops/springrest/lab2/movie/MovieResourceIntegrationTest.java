@@ -1,4 +1,4 @@
-package com.toedter.workshops.springrest.lab2.user;
+package com.toedter.workshops.springrest.lab2.movie;
 
 import org.hamcrest.CoreMatchers;
 import org.junit.jupiter.api.BeforeEach;
@@ -20,7 +20,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
-public class UserResourceIntegrationTest {
+public class MovieResourceIntegrationTest {
 
     @Autowired
     protected WebApplicationContext context;
@@ -43,18 +43,18 @@ public class UserResourceIntegrationTest {
                 andDo(MockMvcResultHandlers.print()).
                 andExpect(status().isOk()).
                 andExpect(content().contentType("application/hal+json")).
-                andExpect(jsonPath("_links.users.href", CoreMatchers.notNullValue())).
+                andExpect(jsonPath("_links.movies.href", CoreMatchers.notNullValue())).
                 andReturn().
                 getResponse();
 
         LinkDiscoverer discoverer = links.getLinkDiscovererFor(response2.getContentType()).get();
-        Link link = discoverer.findLinkWithRel("users", response2.getContentAsString()).get();
+        Link link = discoverer.findLinkWithRel("movies", response2.getContentAsString()).get();
         String href = link.getHref();
         String hrefWithoutTemplateParameters = href.substring(0, href.indexOf("{"));
 
         mvc.perform(get(hrefWithoutTemplateParameters)).
                 andDo(MockMvcResultHandlers.print()).
                 andExpect(content().contentTypeCompatibleWith(MediaTypes.HAL_JSON)).
-                andExpect(jsonPath("_embedded.users", CoreMatchers.notNullValue()));
+                andExpect(jsonPath("_embedded.movies", CoreMatchers.notNullValue()));
     }
 }
