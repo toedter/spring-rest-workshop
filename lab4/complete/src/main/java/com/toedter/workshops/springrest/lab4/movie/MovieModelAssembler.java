@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.toedter.workshops.springrest.lab2.movie;
+package com.toedter.workshops.springrest.lab4.movie;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.hateoas.CollectionModel;

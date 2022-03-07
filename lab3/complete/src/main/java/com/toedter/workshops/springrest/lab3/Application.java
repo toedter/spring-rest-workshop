@@ -1,4 +1,4 @@
-package com.toedter.workshops.springrest.lab2;
+package com.toedter.workshops.springrest.lab3;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

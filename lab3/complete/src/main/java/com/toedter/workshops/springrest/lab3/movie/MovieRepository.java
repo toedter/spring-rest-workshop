@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.toedter.workshops.springrest.lab2.movie;
+package com.toedter.workshops.springrest.lab3.movie;
 
 import org.springframework.data.repository.PagingAndSortingRepository;
 

@@ -1,7 +1,7 @@
-package com.toedter.workshops.springrest.lab2.director;
+package com.toedter.workshops.springrest.lab4.director;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.toedter.workshops.springrest.lab2.movie.Movie;
+import com.toedter.workshops.springrest.lab4.movie.Movie;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

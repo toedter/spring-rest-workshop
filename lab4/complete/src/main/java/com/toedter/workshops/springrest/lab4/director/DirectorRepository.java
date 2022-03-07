@@ -1,4 +1,4 @@
-package com.toedter.workshops.springrest.lab2.director;
+package com.toedter.workshops.springrest.lab4.director;
 
 import org.springframework.data.repository.PagingAndSortingRepository;
 

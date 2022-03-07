@@ -14,10 +14,11 @@
  * limitations under the License.
  */
 
-package com.toedter.workshops.springrest.lab2.movie;
+package com.toedter.workshops.springrest.lab3.movie;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.toedter.workshops.springrest.lab2.director.Director;
+import com.sun.istack.NotNull;
+import com.toedter.workshops.springrest.lab3.director.Director;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.hateoas.server.core.Relation;
@@ -36,6 +37,7 @@ public class Movie {
     @JsonIgnore
     private Long id;
 
+    @NotNull
     private String title;
     private long year;
     private String imdbId;

@@ -1,6 +1,7 @@
-package com.toedter.workshops.springrest.lab2.movie;
+package com.toedter.workshops.springrest.lab4.movie;
 
-import org.hamcrest.Matchers;
+import com.toedter.workshops.springrest.lab4.movie.Movie;
+import com.toedter.workshops.springrest.lab4.movie.MovieRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

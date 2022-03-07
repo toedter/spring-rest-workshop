@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package com.toedter.workshops.springrest.lab2.movie;
+package com.toedter.workshops.springrest.lab3.movie;
 
-import com.toedter.workshops.springrest.lab2.director.Director;
-import com.toedter.workshops.springrest.lab2.director.DirectorRepository;
+import com.toedter.workshops.springrest.lab3.director.Director;
+import com.toedter.workshops.springrest.lab3.director.DirectorRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.hateoas.*;
