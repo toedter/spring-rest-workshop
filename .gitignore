@@ -14,3 +14,5 @@ bin
 .project
 .vagrant
 *.log
+.angular
+.vscode
