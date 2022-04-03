@@ -1,0 +1,15 @@
+<div *ngIf="movie" class="container">
+  <h4>{{movie.attributes.title}}</h4>
+  <br>
+  <form>
+    <img alt="poster" style="float:left;margin-right:20px;" [src]="movie.attributes.thumb" height="320">
+    <div>
+      <div style="margin-bottom:15px;" class="form-group row" *ngFor="let property of movie.attributes | keyvalue">
+        <label class="col-sm-2 col-form-label">{{property.key}}:</label>
+        <div class="col-sm-5">
+          <input class="form-control" id="title" [value]="property.value">
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

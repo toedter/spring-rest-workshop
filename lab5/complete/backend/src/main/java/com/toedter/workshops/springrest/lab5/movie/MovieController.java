@@ -31,6 +31,7 @@ import javax.persistence.EntityNotFoundException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -91,6 +92,10 @@ public class MovieController {
 
         final JsonApiModelBuilder jsonApiModelBuilder =
                 jsonApiModel().model(pagedModel).link(selfLink).pageLinks(pageLinksBase);
+
+        for (Movie movie : pagedResult.getContent()) {
+            jsonApiModelBuilder.included(movie.getDirectors());
+        }
 
         return ResponseEntity.ok(jsonApiModelBuilder.build());
     }

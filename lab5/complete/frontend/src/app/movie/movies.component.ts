@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {Movie} from './movie';
 import {MovieService} from './movie.service';
 
-
 @Component({
   selector: 'app-users',
   templateUrl: 'movies.component.html',
@@ -11,9 +10,10 @@ import {MovieService} from './movie.service';
 export class MoviesComponent implements OnInit {
   movies: Movie[] = [];
   page: any = {};
+  included: any[] = [];
   links: any = {};
 
-  constructor(private usersService: MovieService) {
+  constructor(private movieService: MovieService) {
     console.log('MoviesComponent');
   }
 
@@ -22,18 +22,23 @@ export class MoviesComponent implements OnInit {
   }
 
   getMovies(url?: string) {
-    this.usersService.getMovies(url)
+    this.movieService.getMovies(url)
       .subscribe(
         (response: any) => {
           this.movies = response.data;
           this.page = response.meta.page;
           this.links = response.links;
+          this.included = response.included;
         },
         error => console.error('MoviesComponent: cannot get users from UserService'));
   }
 
   getMoviesByPage(page: number) {
     this.getMovies('/api/movies?page[number]=' + page);
+  }
+
+  getDirectors(movie: any) {
+   return this.movieService.getDirectors(movie, this.included);
   }
 
   getMinPage(): number {

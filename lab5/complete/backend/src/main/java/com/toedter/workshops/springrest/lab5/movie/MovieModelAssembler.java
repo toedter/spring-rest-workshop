@@ -16,15 +16,16 @@
 
 package com.toedter.workshops.springrest.lab5.movie;
 
+import com.toedter.spring.hateoas.jsonapi.JsonApiModelBuilder;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.hateoas.CollectionModel;
-import org.springframework.hateoas.EntityModel;
-import org.springframework.hateoas.Link;
-import org.springframework.hateoas.RepresentationModel;
+import org.springframework.hateoas.*;
 import org.springframework.stereotype.Component;
 
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+import java.util.Arrays;
+
+import static com.toedter.spring.hateoas.jsonapi.JsonApiModelBuilder.jsonApiModel;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.afford;
 
 @Component
 @Slf4j
@@ -36,7 +37,24 @@ class MovieModelAssembler {
         Link selfLink = linkTo(methodOn(MovieController.class).findOne(movie.getId())).withSelfRel();
         Link directorsLink = linkTo(methodOn(MovieController.class).findDirectors(movie.getId())).withRel("directors");
 
-        return EntityModel.of(movie, selfLink, directorsLink);
+        String relationshipSelfLink = selfLink.getHref() + "/relationships/" + DIRECTORS;
+        String relationshipRelatedLink = selfLink.getHref() + "/" + DIRECTORS;
+
+        final Affordance updatePartiallyAffordance =
+                afford(methodOn(MovieController.class).updateMoviePartially(EntityModel.of(movie), movie.getId()));
+
+        final Affordance deleteAffordance =
+                afford(methodOn(MovieController.class).deleteMovie(movie.getId()));
+
+        JsonApiModelBuilder builder = jsonApiModel()
+                .model(movie)
+                .link(selfLink.andAffordance(updatePartiallyAffordance).andAffordance(deleteAffordance));
+
+        builder = builder
+                .relationship(DIRECTORS, movie.getDirectors())
+                .relationship(DIRECTORS, relationshipSelfLink, relationshipRelatedLink, null);
+
+        return builder.build();
     }
 
     public RepresentationModel<?> directorsToModel(Movie movie) {

@@ -7,12 +7,14 @@ import {AppComponent} from './app.component';
 import {MoviesComponent} from "./movie/movies.component";
 import {StarRatingModule} from 'angular-star-rating';
 import {AboutComponent} from "./about/about.component";
+import { MovieComponent } from './movie/movie.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AboutComponent,
-    MoviesComponent
+    MoviesComponent,
+    MovieComponent
   ],
   imports: [
     BrowserModule,
