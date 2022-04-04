@@ -33,7 +33,7 @@ class MovieModelAssembler {
 
     private static final String DIRECTORS = "directors";
 
-    public RepresentationModel<?> toModel(Movie movie) {
+    public RepresentationModel<?> toModel(Movie movie, boolean withAffordances) {
         Link selfLink = linkTo(methodOn(MovieController.class).findOne(movie.getId())).withSelfRel();
         Link directorsLink = linkTo(methodOn(MovieController.class).findDirectors(movie.getId())).withRel("directors");
 
@@ -46,9 +46,16 @@ class MovieModelAssembler {
         final Affordance deleteAffordance =
                 afford(methodOn(MovieController.class).deleteMovie(movie.getId()));
 
+        Link link;
+        if(withAffordances) {
+            link = selfLink.andAffordance(updatePartiallyAffordance).andAffordance(deleteAffordance);
+        } else {
+            link = selfLink;
+        }
+
         JsonApiModelBuilder builder = jsonApiModel()
                 .model(movie)
-                .link(selfLink.andAffordance(updatePartiallyAffordance).andAffordance(deleteAffordance));
+                .link(link);
 
         builder = builder
                 .relationship(DIRECTORS, movie.getDirectors())

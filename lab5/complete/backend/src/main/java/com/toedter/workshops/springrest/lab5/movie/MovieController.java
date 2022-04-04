@@ -67,7 +67,7 @@ public class MovieController {
 
         List<? extends RepresentationModel<?>> movieResources =
                 StreamSupport.stream(pagedResult.spliterator(), false)
-                        .map(movieModelAssembler::toModel)
+                        .map((Movie movie1) -> movieModelAssembler.toModel(movie1, false))
                         .collect(Collectors.toList());
 
         final Affordance newMovieAffordance =
@@ -85,7 +85,7 @@ public class MovieController {
                         pagedResult.getTotalPages());
 
         final PagedModel<? extends RepresentationModel<?>> pagedModel =
-                PagedModel.of(movieResources, pageMetadata, selfLink);
+                PagedModel.of(movieResources, pageMetadata);
 
         String pageLinksBase =
                 linkTo(MovieController.class).slash("movies").withSelfRel().getHref();
@@ -120,7 +120,7 @@ public class MovieController {
         }
         movieRepository.save(movie);
 
-        final RepresentationModel<?> movieRepresentationModel = movieModelAssembler.toModel(movie);
+        final RepresentationModel<?> movieRepresentationModel = movieModelAssembler.toModel(movie,false);
 
         return movieRepresentationModel
                 .getLink(IanaLinkRelations.SELF)
@@ -141,7 +141,7 @@ public class MovieController {
             @PathVariable Long id) {
 
         return movieRepository.findById(id)
-                .map(movieModelAssembler::toModel)
+                .map((Movie movie) -> movieModelAssembler.toModel(movie, true))
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
@@ -163,7 +163,7 @@ public class MovieController {
         existingMovie.update(movie);
 
         movieRepository.save(existingMovie);
-        final RepresentationModel<?> movieRepresentationModel = movieModelAssembler.toModel(existingMovie);
+        final RepresentationModel<?> movieRepresentationModel = movieModelAssembler.toModel(existingMovie, false);
 
         return movieRepresentationModel
                 .getLink(IanaLinkRelations.SELF)
