@@ -13,7 +13,7 @@
       <td style="text-align: left;vertical-align:middle;">{{ director.attributes.name }}</td>
       <td style="text-align: left;vertical-align:middle;">
         <div *ngFor="let movie of getMovies(director) | keyvalue">
-          <a style="text-decoration:none!important;" href="/movies/ + {{movie.value.id}}">{{movie.value.attributes.title}}</a>
+          <a style="text-decoration:none!important;" href="/movies/{{movie.value.id}}">{{movie.value.attributes.title}}</a>
         </div>
       </td>
     </tr>
