@@ -1,0 +1,62 @@
+<main role="main" class="container">
+  <br/>
+  <h4>Directors</h4>
+  <table class="table table-striped table-sm">
+    <thead>
+    <tr>
+      <th style="text-align: left; width:25%;">Director</th>
+      <th style="text-align: left; width:75%;">Movies</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let director of directors">
+      <td style="text-align: left;vertical-align:middle;">{{ director.attributes.name }}</td>
+      <td style="text-align: left;vertical-align:middle;">
+        <div *ngFor="let movie of getMovies(director) | keyvalue">
+          <a style="text-decoration:none!important;" href="/movies/ + {{movie.value.id}}">{{movie.value.attributes.title}}</a>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+
+      <li [class]="{'page-item':true, 'disabled':!links.first}">
+        <a class="page-link" routerLink="directors" aria-label="First" (click)="getDirectors(links.first)">
+          <span aria-hidden="true">&laquo;</span>
+          <span class="visually-hidden visually-hidden-focusable">First</span>
+        </a>
+      </li>
+
+      <li [class]="{'page-item':true, 'disabled':!links.prev}">
+        <a class="page-link" routerLink="directors" aria-label="Previous" (click)="getDirectors(links.prev)">
+          <span aria-hidden="true">&lsaquo;</span>
+          <span class="visually-hidden">Previous</span>
+        </a>
+      </li>
+
+      <li *ngFor="let item of getPages(); let i = index"
+          [class]="{'page-item':true, 'active':page.number === i+getMinPage()}">
+        <a class="page-link" routerLink="directors"
+           (click)="getDirectorsByPage(i+getMinPage())">{{ i + getMinPage() + 1}}</a>
+      </li>
+
+      <li [class]="{'page-item':true, 'disabled':!links.next}">
+        <a class="page-link" routerLink="directors" aria-label="Next" (click)="getDirectors(links.next)">
+          <span aria-hidden="true">&rsaquo;</span>
+          <span class="visually-hidden">Next</span>
+        </a>
+      </li>
+
+      <li [class]="{'page-item':true, 'disabled':!links.last}">
+        <a class="page-link" routerLink="directors" aria-label="Last" (click)="getDirectors(links.last)">
+          <span aria-hidden="true">&raquo;</span>
+          <span class="visually-hidden">Last</span>
+        </a>
+      </li>
+    </ul>
+
+  </nav>
+</main>
