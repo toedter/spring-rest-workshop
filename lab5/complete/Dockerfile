@@ -1,6 +1,6 @@
 FROM eclipse-temurin:17-alpine as builder
 WORKDIR application
-ARG JAR_FILE=backend/build/libs/backend.jar
+ARG JAR_FILE=backend/build/libs/*.jar
 COPY ${JAR_FILE} application.jar
 RUN java -Djarmode=layertools -jar application.jar extract
 
