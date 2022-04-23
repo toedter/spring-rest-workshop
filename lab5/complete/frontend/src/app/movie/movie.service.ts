@@ -46,13 +46,23 @@ export class MovieService {
   }
 
   public deleteMovie(movie: Movie) {
+    if (!window.location.host.startsWith('localhost')) {
+      alert('Sorry, deleting movies in the cloud is not allowed.');
+      return;
+    }
+
     const href = (movie as any).links?.self?.href;
     if (href) {
       this.http.delete(href).subscribe();
     }
   }
 
-  changeMovie(movie: Movie) {
+  updateMovie(movie: Movie) {
+    if (!window.location.host.startsWith('localhost')) {
+      alert('Sorry, updating movies in the cloud is not allowed.');
+      return;
+    }
+
     const href = (movie as any).links?.self?.href;
     if (href) {
       this.http.patch(href, { data: movie }, {headers : new HttpHeaders({ 'Content-Type': 'application/vnd.api+json' })}).subscribe();

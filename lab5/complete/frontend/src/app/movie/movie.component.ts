@@ -63,7 +63,7 @@ export class MovieComponent implements OnInit {
     const href = (movie as any).links?.self?.href;
     if (href) {
       movie.attributes = this.form.value;
-      this.movieService.changeMovie(movie);
+      this.movieService.updateMovie(movie);
       // this.router.navigate(['/movies']);
     }
   }
