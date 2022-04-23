@@ -9,6 +9,7 @@ import {StarRatingModule} from 'angular-star-rating';
 import {AboutComponent} from "./about/about.component";
 import {MovieComponent} from './movie/movie.component';
 import {DirectorsComponent} from "./director/directors.component";
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,8 @@ import {DirectorsComponent} from "./director/directors.component";
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
     StarRatingModule.forRoot()

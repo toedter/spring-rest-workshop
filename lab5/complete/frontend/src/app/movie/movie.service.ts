@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
 import {Movie} from './movie';
@@ -26,10 +26,9 @@ export class MovieService {
     let uri = '/api/movies/' + id;
 
     return this.http.get(uri).pipe(
-      map((response: any) => new Movie(response.data.id, response.data.attributes)),
+      map((response: any) => new Movie(response.data.id, response.data.attributes, response.links)),
       catchError(this.handleError)
-    )
-      ;
+    );
   }
 
   public getDirectors(movie: any, included: any[]): any[] {
@@ -44,6 +43,20 @@ export class MovieService {
       }
     }
     return result;
+  }
+
+  public deleteMovie(movie: Movie) {
+    const href = (movie as any).links?.self?.href;
+    if (href) {
+      this.http.delete(href).subscribe();
+    }
+  }
+
+  changeMovie(movie: Movie) {
+    const href = (movie as any).links?.self?.href;
+    if (href) {
+      this.http.patch(href, { data: movie }, {headers : new HttpHeaders({ 'Content-Type': 'application/vnd.api+json' })}).subscribe();
+    }
   }
 
   private handleError(error: any) {

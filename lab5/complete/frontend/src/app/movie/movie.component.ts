@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {MovieService} from "./movie.service";
 import {Movie} from "./movie";
+import {FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-movie',
@@ -10,8 +11,21 @@ import {Movie} from "./movie";
 })
 export class MovieComponent implements OnInit {
   movie: Movie | undefined;
+  form: FormGroup;
 
-  constructor(private route: ActivatedRoute, private movieService: MovieService) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private movieService: MovieService,
+    private router: Router,
+    private route: ActivatedRoute) {
+    this.form = this.formBuilder.group({
+      title: [''],
+      year: [''],
+      imdbId: [''],
+      rating: [''],
+      rank: [''],
+      thumb: ['']
+    });
   }
 
   ngOnInit(): void {
@@ -24,7 +38,33 @@ export class MovieComponent implements OnInit {
       .subscribe(
         (response: any) => {
           this.movie = response;
+          this.form = this.formBuilder.group({
+            title: [this.movie?.attributes.title],
+            year: [this.movie?.attributes.year],
+            imdbId: [this.movie?.attributes.imdbId],
+            rating: [this.movie?.attributes.rating],
+            rank: [this.movie?.attributes.rank],
+            thumb: [this.movie?.attributes.thumb]
+          });
+
         },
         error => console.error('MoviesComponent: cannot get users from UserService'));
+  }
+
+  deleteMovie(movie: Movie) {
+    const href = (movie as any).links?.self?.href;
+    if (href) {
+      this.movieService.deleteMovie(href);
+      this.router.navigate(['/movies']);
+    }
+  }
+
+  updateMovie(movie: Movie) {
+    const href = (movie as any).links?.self?.href;
+    if (href) {
+      movie.attributes = this.form.value;
+      this.movieService.changeMovie(movie);
+      // this.router.navigate(['/movies']);
+    }
   }
 }
