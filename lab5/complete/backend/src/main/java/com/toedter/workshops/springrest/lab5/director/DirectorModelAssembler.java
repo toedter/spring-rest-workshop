@@ -35,6 +35,9 @@ class DirectorModelAssembler {
     public RepresentationModel<?> directorsToModel(Director director) {
         Link selfLink = linkTo(methodOn(DirectorController.class).findDirectors(director.getId())).withSelfRel();
 
-        return CollectionModel.of(director.getMovies(), selfLink);
+        RepresentationModel<?> movies = CollectionModel.of(director.getMovies());
+        movies.add(selfLink);
+
+        return movies;
     }
 }

@@ -18,11 +18,16 @@ package com.toedter.workshops.springrest.lab2.movie;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.toedter.workshops.springrest.lab2.director.Director;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.hateoas.server.core.Relation;
 
-import javax.persistence.*;
+
 import java.util.ArrayList;
 import java.util.List;
 

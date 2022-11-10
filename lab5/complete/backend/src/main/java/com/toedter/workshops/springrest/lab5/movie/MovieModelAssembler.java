@@ -1,6 +1,7 @@
 package com.toedter.workshops.springrest.lab5.movie;
 
 import com.toedter.spring.hateoas.jsonapi.JsonApiModelBuilder;
+import com.toedter.workshops.springrest.lab5.director.Director;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.hateoas.*;
 import org.springframework.stereotype.Component;
@@ -51,6 +52,9 @@ class MovieModelAssembler {
     public RepresentationModel<?> directorsToModel(Movie movie) {
         Link selfLink = linkTo(methodOn(MovieController.class).findDirectors(movie.getId())).withSelfRel();
 
-        return CollectionModel.of(movie.getDirectors(), selfLink);
+        RepresentationModel<?> directors = CollectionModel.of(movie.getDirectors());
+        directors.add(selfLink);
+
+        return directors;
     }
 }
