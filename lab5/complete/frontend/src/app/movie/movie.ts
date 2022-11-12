@@ -3,7 +3,7 @@ export class Movie {
               public attributes: {
                 imdbId: string,
                 rank: string,
-                rating: string,
+                rating: number,
                 title: string,
                 year: string,
                 thumb: string

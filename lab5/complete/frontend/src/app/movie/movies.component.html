@@ -19,11 +19,18 @@
         <img [src]="movie.attributes.thumb" height="50" width="35"/>
       </td>
       <td style="text-align: right;vertical-align:middle;">{{ movie.attributes.rank }}</td>
-      <td style="text-align: left;vertical-align:middle;"><a style="text-decoration:none!important;" routerLink="/movies/{{movie.id}}">{{ movie.attributes.title }}</a></td>
+      <td style="text-align: left;vertical-align:middle;"><a style="text-decoration:none!important;"
+                                                             routerLink="/movies/{{movie.id}}">{{ movie.attributes.title }}</a>
+      </td>
       <td style="text-align: left;vertical-align:middle;">{{getDirectors(movie).join(', ')}}</td>
       <td style="text-align: left;vertical-align:middle;">{{ movie.attributes.year }}</td>
 
-      <td style="text-align: left;vertical-align:middle;horiz-align:left"><star-rating staticColor="ok" [readOnly]="true" [numOfStars]="10" [rating]="movie.attributes.rating"></star-rating></td>
+      <td style="text-align: left;vertical-align:middle;horiz-align:left">
+        <star-rating staticColor="ok"
+                     [starType]="'svg'" [showHalfStars]="true" [readOnly]="true"
+                     [numOfStars]="10" [rating]="movie.attributes.rating">
+        </star-rating>
+      </td>
       <td style="text-align: left;vertical-align:middle;">{{ movie.attributes.rating }}</td>
 
     </tr>
