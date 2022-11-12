@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {MovieService} from "./movie.service";
 import {Movie} from "./movie";
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-movie',
@@ -11,10 +11,10 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 })
 export class MovieComponent implements OnInit {
   movie: Movie | undefined;
-  form: FormGroup;
+  form: UntypedFormGroup;
 
   constructor(
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private movieService: MovieService,
     private router: Router,
     private route: ActivatedRoute) {
