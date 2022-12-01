@@ -9,7 +9,7 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-starter-data-rest"
     implementation "com.jayway.jsonpath:json-path"
 
-    runtimeOnly 'org.hsqldb:hsqldb:2.6.0'
+    runtimeOnly 'org.hsqldb:hsqldb'
 }
 
 test {

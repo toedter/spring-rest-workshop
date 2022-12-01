@@ -15,10 +15,10 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-hateoas'
-    implementation 'com.toedter:spring-hateoas-jsonapi:2.0.0-SNAPSHOT'
+    implementation 'com.toedter:spring-hateoas-jsonapi:2.0.0'
     implementation 'javax.validation:validation-api:2.0.1.Final'
 
-    runtimeOnly 'org.hsqldb:hsqldb:2.6.0'
+    runtimeOnly 'org.hsqldb:hsqldb'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }

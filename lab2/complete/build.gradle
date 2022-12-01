@@ -11,7 +11,7 @@ dependencies {
     implementation 'org.springframework.data:spring-data-rest-hal-explorer'
     implementation 'org.webjars:hal-explorer:1.1.0'
 
-    runtimeOnly 'org.hsqldb:hsqldb:2.6.0'
+    runtimeOnly 'org.hsqldb:hsqldb'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
