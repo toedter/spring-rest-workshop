@@ -69,7 +69,7 @@ export class MovieService {
   }
 
   private handleError(error: any) {
-    const errMsg = 'MovieService: cannot get users from http server.';
+    const errMsg = 'MovieService: cannot get movies from http server.';
     console.error(errMsg); // log to console instead
     return throwError(errMsg);
   }

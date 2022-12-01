@@ -35,7 +35,7 @@ export class DirectorService {
   }
 
   private handleError(error: any) {
-    const errMsg = 'DirectorService: cannot get users from http server.';
+    const errMsg = 'DirectorService: cannot get directors from http server.';
     console.error(errMsg); // log to console instead
     return throwError(errMsg);
   }
