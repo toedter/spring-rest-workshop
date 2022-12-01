@@ -45,13 +45,12 @@ export class MovieService {
     return result;
   }
 
-  public deleteMovie(movie: Movie) {
+  public deleteMovie(href: string) {
     if (!window.location.host.startsWith('localhost')) {
       alert('Sorry, deleting movies in the cloud is not allowed.');
       return;
     }
 
-    const href = (movie as any).links?.self?.href;
     if (href) {
       this.http.delete(href).subscribe();
     }
@@ -63,7 +62,7 @@ export class MovieService {
       return;
     }
 
-    const href = (movie as any).links?.self?.href;
+    const href = (movie as any).links?.self;
     if (href) {
       this.http.patch(href, { data: movie }, {headers : new HttpHeaders({ 'Content-Type': 'application/vnd.api+json' })}).subscribe();
     }
