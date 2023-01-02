@@ -35,7 +35,7 @@ class MovieModelAssembler {
 
     public EntityModel<Movie> toModel(Movie movie) {
         Link selfLink = linkTo(methodOn(MovieController.class).findOne(movie.getId())).withSelfRel();
-        Link directorsLink = linkTo(methodOn(MovieController.class).findDirectors(movie.getId())).withRel("directors");
+        Link directorsLink = linkTo(methodOn(MovieController.class).findDirectors(movie.getId())).withRel(DIRECTORS);
 
         return EntityModel.of(movie, selfLink, directorsLink);
     }
