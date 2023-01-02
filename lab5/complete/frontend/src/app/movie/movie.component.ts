@@ -35,8 +35,8 @@ export class MovieComponent implements OnInit {
   getMovie() {
     const id: string | null = this.route.snapshot.paramMap.get('id');
     this.movieService.getMovieById(id)
-      .subscribe(
-        (response: any) => {
+      .subscribe({
+        next: (response: any) => {
           this.movie = response;
           this.form = this.formBuilder.group({
             title: [this.movie?.attributes.title],
@@ -48,7 +48,8 @@ export class MovieComponent implements OnInit {
           });
 
         },
-        error => console.error('MoviesComponent: cannot get users from UserService'));
+        error: error => console.error('MoviesComponent: cannot get users from UserService')
+      });
   }
 
   deleteMovie(movie: Movie) {
