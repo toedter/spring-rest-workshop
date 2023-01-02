@@ -22,14 +22,15 @@ export class DirectorsComponent implements OnInit {
 
   getDirectors(url?: string) {
     this.directorService.getDirectors(url)
-      .subscribe(
-        (response: any) => {
+      .subscribe({
+        next: (response: any) => {
           this.directors = response.data;
           this.page = response.meta.page;
           this.links = response.links;
           this.included = response.included;
         },
-        error => console.error('MoviesComponent: cannot get users from UserService'));
+        error: error => console.error('MoviesComponent: cannot get users from UserService')
+      });
   }
 
   getDirectorsByPage(page: number) {
@@ -37,7 +38,7 @@ export class DirectorsComponent implements OnInit {
   }
 
   getMovies(director: any) {
-   return this.directorService.getMovies(director, this.included);
+    return this.directorService.getMovies(director, this.included);
   }
 
   getMinPage(): number {
