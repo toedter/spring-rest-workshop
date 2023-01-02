@@ -54,7 +54,7 @@ public class MovieController {
     }
 
     @GetMapping("/movies")
-    public ResponseEntity<RepresentationModel<?>> findAll(
+    public ResponseEntity<PagedModel<EntityModel<Movie>>> findAll(
             @RequestParam(value = "page", defaultValue = "0", required = false) int page,
             @RequestParam(value = "size", defaultValue = "10", required = false) int size) {
 
@@ -62,7 +62,7 @@ public class MovieController {
 
         final Page<Movie> pagedResult = movieRepository.findAll(pageRequest);
 
-        List<? extends RepresentationModel<?>> movieResources =
+        List<EntityModel<Movie>> movieResources =
                 StreamSupport.stream(pagedResult.spliterator(), false)
                         .map(movieModelAssembler::toModel)
                         .collect(Collectors.toList());
@@ -81,17 +81,14 @@ public class MovieController {
                         pagedResult.getTotalElements(),
                         pagedResult.getTotalPages());
 
-        final PagedModel<? extends RepresentationModel<?>> pagedModel =
+        final PagedModel<EntityModel<Movie>> pagedModel =
                 PagedModel.of(movieResources, pageMetadata, selfLink);
-
-        String pageLinksBase =
-                linkTo(MovieController.class).slash("movies").withSelfRel().getHref();
 
         return ResponseEntity.ok(pagedModel);
     }
 
     @PostMapping("/movies")
-    public ResponseEntity<?> newMovie(@RequestBody EntityModel<Movie> movieModel) {
+    public ResponseEntity<EntityModel<Movie>> newMovie(@RequestBody EntityModel<Movie> movieModel) {
         Movie movie = movieModel.getContent();
         assert movie != null;
         movieRepository.save(movie);
@@ -110,7 +107,7 @@ public class MovieController {
         }
         movieRepository.save(movie);
 
-        final RepresentationModel<?> movieRepresentationModel = movieModelAssembler.toModel(movie);
+        final EntityModel<Movie> movieRepresentationModel = movieModelAssembler.toModel(movie);
 
         return movieRepresentationModel
                 .getLink(IanaLinkRelations.SELF)
@@ -127,7 +124,7 @@ public class MovieController {
     }
 
     @GetMapping("/movies/{id}")
-    public ResponseEntity<? extends RepresentationModel<?>> findOne(
+    public ResponseEntity<EntityModel<Movie>> findOne(
             @PathVariable Long id) {
 
         return movieRepository.findById(id)
@@ -137,7 +134,7 @@ public class MovieController {
     }
     
     @GetMapping("/movies/{id}/directors")
-    public ResponseEntity<? extends RepresentationModel<?>> findDirectors(@PathVariable Long id) {
+    public ResponseEntity<CollectionModel<Director>> findDirectors(@PathVariable Long id) {
 
         return movieRepository.findById(id)
                 .map(movieModelAssembler::directorsToModel)
@@ -146,14 +143,15 @@ public class MovieController {
     }
 
     @PatchMapping("/movies/{id}")
-    public ResponseEntity<?> updateMoviePartially(@RequestBody EntityModel<Movie> movieModel, @PathVariable Long id) {
+    public ResponseEntity<?> updateMoviePartially(
+            @RequestBody EntityModel<Movie> movieModel, @PathVariable Long id) {
 
         Movie existingMovie = movieRepository.findById(id).orElseThrow(() -> new EntityNotFoundException(id.toString()));
         Movie movie = movieModel.getContent();
         existingMovie.update(movie);
 
         movieRepository.save(existingMovie);
-        final RepresentationModel<?> movieRepresentationModel = movieModelAssembler.toModel(existingMovie);
+        final EntityModel<Movie> movieRepresentationModel = movieModelAssembler.toModel(existingMovie);
 
         return movieRepresentationModel
                 .getLink(IanaLinkRelations.SELF)

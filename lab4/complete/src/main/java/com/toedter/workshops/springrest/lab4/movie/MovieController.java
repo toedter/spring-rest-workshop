@@ -84,9 +84,6 @@ public class MovieController {
         final PagedModel<? extends RepresentationModel<?>> pagedModel =
                 PagedModel.of(movieResources, pageMetadata, selfLink);
 
-        String pageLinksBase =
-                linkTo(MovieController.class).slash("movies").withSelfRel().getHref();
-
         return ResponseEntity.ok(pagedModel);
     }
 

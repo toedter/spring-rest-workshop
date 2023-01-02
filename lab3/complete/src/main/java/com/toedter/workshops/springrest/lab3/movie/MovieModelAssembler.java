@@ -16,6 +16,7 @@
 
 package com.toedter.workshops.springrest.lab3.movie;
 
+import com.toedter.workshops.springrest.lab3.director.Director;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
@@ -32,14 +33,14 @@ class MovieModelAssembler {
 
     private static final String DIRECTORS = "directors";
 
-    public RepresentationModel<?> toModel(Movie movie) {
+    public EntityModel<Movie> toModel(Movie movie) {
         Link selfLink = linkTo(methodOn(MovieController.class).findOne(movie.getId())).withSelfRel();
         Link directorsLink = linkTo(methodOn(MovieController.class).findDirectors(movie.getId())).withRel("directors");
 
         return EntityModel.of(movie, selfLink, directorsLink);
     }
 
-    public RepresentationModel<?> directorsToModel(Movie movie) {
+    public CollectionModel<Director> directorsToModel(Movie movie) {
         Link selfLink = linkTo(methodOn(MovieController.class).findDirectors(movie.getId())).withSelfRel();
 
         return CollectionModel.of(movie.getDirectors(), selfLink);
