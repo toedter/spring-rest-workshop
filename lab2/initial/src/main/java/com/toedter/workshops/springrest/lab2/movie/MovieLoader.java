@@ -4,8 +4,6 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.toedter.workshops.springrest.lab2.director.Director;
 import com.toedter.workshops.springrest.lab2.director.DirectorRepository;
-import com.toedter.workshops.springrest.lab2.movie.Movie;
-import com.toedter.workshops.springrest.lab2.movie.MovieRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -20,8 +18,8 @@ import java.nio.file.Paths;
 
 @Component
 @Slf4j
-class MovieLoader {
-
+class MovieLoader { 
+/*
     @Bean
     CommandLineRunner init(MovieRepository movieRepository, DirectorRepository directorRepository) {
 
@@ -57,7 +55,7 @@ class MovieLoader {
             }
         };
     }
-
+*/
     private Movie createMovie(int rank, JsonNode rootNode) {
         String title = rootNode.get("Title").asText();
         String imdbId = rootNode.get("imdbID").asText();

@@ -4,14 +4,19 @@ apply plugin: 'io.spring.dependency-management'
 apply plugin: 'io.freefair.lombok'
 
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation "org.springframework.boot:spring-boot-starter-web"
     implementation "org.springframework.boot:spring-boot-starter-data-jpa"
     implementation "org.springframework.boot:spring-boot-starter-data-rest"
     implementation "com.jayway.jsonpath:json-path"
+    implementation 'org.springframework.data:spring-data-rest-hal-explorer'
+    implementation 'org.webjars:hal-explorer:1.1.0'
 
     runtimeOnly 'org.hsqldb:hsqldb'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 test {
     useJUnitPlatform()
 }
+
