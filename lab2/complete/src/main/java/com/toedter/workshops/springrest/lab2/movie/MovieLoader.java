@@ -4,8 +4,6 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.toedter.workshops.springrest.lab2.director.Director;
 import com.toedter.workshops.springrest.lab2.director.DirectorRepository;
-import com.toedter.workshops.springrest.lab2.movie.Movie;
-import com.toedter.workshops.springrest.lab2.movie.MovieRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;

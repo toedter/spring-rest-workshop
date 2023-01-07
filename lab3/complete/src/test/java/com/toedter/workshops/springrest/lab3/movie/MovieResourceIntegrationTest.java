@@ -18,7 +18,9 @@ import org.springframework.web.filter.ShallowEtagHeaderFilter;
 
 import static org.springframework.hateoas.MediaTypes.HAL_FORMS_JSON_VALUE;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
 public class MovieResourceIntegrationTest {

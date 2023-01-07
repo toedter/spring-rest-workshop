@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Observable, throwError, of} from 'rxjs';
+import {Observable, of, throwError} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
 import {Movie} from './movie';
 

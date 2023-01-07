@@ -1,14 +1,8 @@
 package com.toedter.workshops.springrest.lab2;
 
 import com.toedter.workshops.springrest.lab2.movie.Movie;
-import com.toedter.workshops.springrest.lab2.movie.MovieRepository;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
 
 @SpringBootTest
 public class MovieRepositoryIntegrationTest {

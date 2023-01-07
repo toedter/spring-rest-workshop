@@ -1,16 +1,11 @@
 package com.toedter.workshops.springrest.lab4.movie;
 
-import com.toedter.spring.hateoas.jsonapi.JsonApiModelBuilder;
 import com.toedter.workshops.springrest.lab4.director.Director;
 import com.toedter.workshops.springrest.lab4.director.DirectorRepository;
 import jakarta.persistence.EntityNotFoundException;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.hateoas.Affordance;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.IanaLinkRelations;
 import org.springframework.hateoas.Link;
-import org.springframework.hateoas.PagedModel;
 import org.springframework.hateoas.RepresentationModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,14 +25,8 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
-import static com.toedter.spring.hateoas.jsonapi.JsonApiModelBuilder.jsonApiModel;
 import static com.toedter.spring.hateoas.jsonapi.MediaTypes.JSON_API_VALUE;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.afford;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
 @RequestMapping(value = "/api", produces = JSON_API_VALUE)

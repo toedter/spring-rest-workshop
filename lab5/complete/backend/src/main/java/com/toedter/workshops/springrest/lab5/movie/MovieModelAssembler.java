@@ -1,16 +1,18 @@
 package com.toedter.workshops.springrest.lab5.movie;
 
 import com.toedter.spring.hateoas.jsonapi.JsonApiModelBuilder;
-import com.toedter.workshops.springrest.lab5.director.Director;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.hateoas.*;
+import org.springframework.hateoas.Affordance;
+import org.springframework.hateoas.CollectionModel;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.Link;
+import org.springframework.hateoas.RepresentationModel;
 import org.springframework.stereotype.Component;
 
-import java.util.Arrays;
-
 import static com.toedter.spring.hateoas.jsonapi.JsonApiModelBuilder.jsonApiModel;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.afford;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @Component
 @Slf4j

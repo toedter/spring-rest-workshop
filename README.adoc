@@ -3,18 +3,12 @@
 image:https://github.com/toedter/rest-hypermedia-spring-workshop/workflows/Build/badge.svg["build", link="https://github.com/toedter/rest-hypermedia-spring-workshop/actions"]
 image:http://img.shields.io/badge/license-MIT-blue.svg["MIT", link="http://toedter.mit-license.org"]
 
-This is workshop material for building modern RESTful Hypermedia driven web services with Spring.
+This is workshop material for building modern RESTful Hypermedia driven web services with Spring (Spring Boot 3.x).
 
 == Requirements
 
-* Java 8 or later (JDK) installed
-
-For the Angular lab, you don't need to install Node.js and all the JavaScript tooling,
-since those tools are installed automatically by the Gradle build.
-It would be convenient to have those tools installed
-if you want to use them directly instead of using the Gradle wrapper tasks.
-
-* Optional: Node.js and npm installed
+* Java 17 or later (JDK) installed
+* Node.js and npm installed (for lab 5)
 
 == Getting Started
 
