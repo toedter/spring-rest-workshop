@@ -47,7 +47,6 @@ public class Movie {
     private String imdbId;
     private double rating;
     private int rank;
-    @JsonIgnore
     private String thumb;
 
     @ManyToMany(mappedBy = "movies", fetch = FetchType.EAGER)
