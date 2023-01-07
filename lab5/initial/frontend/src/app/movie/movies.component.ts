@@ -21,16 +21,7 @@ export class MoviesComponent implements OnInit {
   }
 
   getMovies(url?: string) {
-    this.movieService.getMovies(url)
-      .subscribe({
-        next: (response: any) => {
-          this.movies = response.data;
-          this.page = response.meta.page;
-          this.links = response.links;
-          this.included = response.included;
-        },
-        error: error => console.error('MoviesComponent: cannot get users from UserService')
-      });
+    // subscribe to movie service and get movies
   }
 
   getMoviesByPage(page: number) {

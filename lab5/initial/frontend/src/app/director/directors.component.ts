@@ -1,30 +1,30 @@
 import {Component, OnInit} from '@angular/core';
-import {Movie} from './movie';
-import {MovieService} from './movie.service';
+import {Director} from './director';
+import {DirectorService} from './director.service';
 
 @Component({
-  selector: 'app-movies',
-  templateUrl: 'movies.component.html',
-  providers: [MovieService],
+  selector: 'app-directors',
+  templateUrl: 'directors.component.html',
+  providers: [DirectorService],
 })
-export class MoviesComponent implements OnInit {
-  movies: Movie[] = [];
+export class DirectorsComponent implements OnInit {
+  directors: Director[] = [];
   page: any = {};
   included: any[] = [];
   links: any = {};
 
-  constructor(private movieService: MovieService) {
+  constructor(private directorService: DirectorService) {
   }
 
   ngOnInit() {
-    this.getMovies();
+    this.getDirectors();
   }
 
-  getMovies(url?: string) {
-    this.movieService.getMovies(url)
+  getDirectors(url?: string) {
+    this.directorService.getDirectors(url)
       .subscribe({
         next: (response: any) => {
-          this.movies = response.data;
+          this.directors = response.data;
           this.page = response.meta.page;
           this.links = response.links;
           this.included = response.included;
@@ -33,12 +33,12 @@ export class MoviesComponent implements OnInit {
       });
   }
 
-  getMoviesByPage(page: number) {
-    this.getMovies('/api/movies?page[number]=' + page);
+  getDirectorsByPage(page: number) {
+    this.getDirectors('/api/directors?page[number]=' + page);
   }
 
-  getDirectors(movie: any) {
-   return this.movieService.getDirectors(movie, this.included);
+  getMovies(director: any) {
+    return this.directorService.getMovies(director, this.included);
   }
 
   getMinPage(): number {
