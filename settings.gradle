@@ -19,4 +19,4 @@ include 'lab5:initial:backend'
 include 'lab5:complete:frontend'
 include 'lab5:complete:backend'
 
-rootProject.name = 'rest-hypermedia-spring-workshop'
+rootProject.name = 'rest-spring-workshop'
