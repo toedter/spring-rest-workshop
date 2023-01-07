@@ -1,9 +1,9 @@
-= REST Hypermedia Spring Workshop
+= Workshop: Bootiful REST Servives with Spring
 
 image:https://github.com/toedter/rest-hypermedia-spring-workshop/workflows/Build/badge.svg["build", link="https://github.com/toedter/rest-hypermedia-spring-workshop/actions"]
 image:http://img.shields.io/badge/license-MIT-blue.svg["MIT", link="http://toedter.mit-license.org"]
 
-This is workshop material for building modern RESTful Hypermedia driven web services with Spring (Spring Boot 3.x).
+This is workshop material for _Bootiful REST Servives with Spring_.
 
 == Requirements
 
