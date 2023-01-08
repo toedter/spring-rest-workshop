@@ -38,10 +38,8 @@ public class MovieController {
             @RequestParam(value = "page", defaultValue = "0", required = false) int page,
             @RequestParam(value = "size", defaultValue = "10", required = false) int size) {
 
-        // prepare a paged model with movies
-        final PagedModel<EntityModel<Movie>> pagedModel = null;
-
-        return ResponseEntity.ok(pagedModel);
+        // return a paged model with movies
+        return null;
     }
 
     @PostMapping("/movies")
