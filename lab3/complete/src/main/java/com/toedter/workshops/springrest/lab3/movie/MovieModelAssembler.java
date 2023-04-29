@@ -7,14 +7,13 @@ import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.Link;
 import org.springframework.stereotype.Component;
 
+import static com.toedter.workshops.springrest.lab3.RootController.DIRECTORS;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @Component
 @Slf4j
 class MovieModelAssembler {
-
-    private static final String DIRECTORS = "directors";
 
     public EntityModel<Movie> toModel(Movie movie) {
         Link selfLink = linkTo(methodOn(MovieController.class).findOne(movie.getId())).withSelfRel();
