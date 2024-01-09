@@ -8,13 +8,12 @@ This is workshop material for _Bootiful REST Servives with Spring_.
 == Requirements
 
 * Java 17 or later (JDK) installed
-* Node.js and npm installed (for lab 5)
 
 == Getting Started
 
 When you want to run the workshop labs locally, prepare all the labs:
 
-* ./gradlew clean build _(builds all the tutorial labs and runs all the tests)_
+* ./gradlew build _(builds all the tutorial labs and runs all the tests)_
 
 == License
 
