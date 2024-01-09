@@ -31,25 +31,3 @@ jobs:
             ${{ runner.os }}-gradle-
       - name: Build with Gradle
         run: ./gradlew build
-      - name: Setup node.js 16
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16'
-      - uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-      - run: npm install
-        working-directory: lab5/complete/frontend
-      - run: npm run build
-        working-directory: lab5/complete/frontend
-#      - name: Build, Push and Release a Docker container to Heroku.
-#        uses: gonuit/heroku-docker-deploy@v1.3.3
-#        with:
-#          email: ${{ secrets.HEROKU_EMAIL }}
-#          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-#          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
-#          dockerfile_directory: ./lab5/complete
-#          process_type: web
