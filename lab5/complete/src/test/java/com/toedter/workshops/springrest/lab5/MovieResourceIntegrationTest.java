@@ -16,9 +16,11 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.filter.ShallowEtagHeaderFilter;
 
+import java.time.Instant;
 import java.util.List;
 
 import static com.toedter.spring.hateoas.jsonapi.MediaTypes.JSON_API_VALUE;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.jwt;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.oidcLogin;
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -48,8 +50,7 @@ public class MovieResourceIntegrationTest {
     @Test
     void shouldGetMovies() throws Exception {
         mvc.perform(get("/api/movies")
-                        .with(SecurityMockMvcRequestPostProcessors.jwt()
-                                .authorities(new SimpleGrantedAuthority("SCOPE_movies.read"))))
+                        .with(jwt().authorities(new SimpleGrantedAuthority("SCOPE_movies.read"))))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(JSON_API_VALUE))
@@ -60,8 +61,7 @@ public class MovieResourceIntegrationTest {
     @Test
     void shouldNotGetMovies() throws Exception {
         mvc.perform(get("/api/movies")
-                        .with(SecurityMockMvcRequestPostProcessors.jwt()
-                                .authorities(new SimpleGrantedAuthority("SCOPE_wrong.scope"))))
+                        .with(jwt().authorities(new SimpleGrantedAuthority("SCOPE_wrong.scope"))))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isForbidden())
                 .andReturn();
