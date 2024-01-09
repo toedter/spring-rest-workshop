@@ -1,4 +1,4 @@
-package com.toedter.workshops.springrest.lab4.movie;
+package com.toedter.workshops.springrest.lab5.movie;
 
 import com.toedter.spring.hateoas.jsonapi.JsonApiModelBuilder;
 import lombok.extern.slf4j.Slf4j;

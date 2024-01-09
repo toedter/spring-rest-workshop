@@ -1,7 +1,7 @@
-package com.toedter.workshops.springrest.lab4.director;
+package com.toedter.workshops.springrest.lab5.director;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.toedter.workshops.springrest.lab4.movie.Movie;
+import com.toedter.workshops.springrest.lab5.movie.Movie;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;

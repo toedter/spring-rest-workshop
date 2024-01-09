@@ -1,4 +1,4 @@
-package com.toedter.workshops.springrest.lab4;
+package com.toedter.workshops.springrest.lab5;
 
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.toedter.spring.hateoas.jsonapi.JsonApiConfiguration;
@@ -18,9 +18,8 @@ public class Application {
         return new JsonApiConfiguration()
                 .withJsonApiObject(new JsonApiObject(true))
                 .withEmptyAttributesObjectSerialized(false)
-                .withObjectMapperCustomizer(objectMapper -> {
-                    objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, true);
-                })
+                .withObjectMapperCustomizer(objectMapper ->
+                        objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, true))
                 .withAffordancesRenderedAsLinkMeta(JsonApiConfiguration.AffordanceType.SPRING_HATEOAS);
     }
 }

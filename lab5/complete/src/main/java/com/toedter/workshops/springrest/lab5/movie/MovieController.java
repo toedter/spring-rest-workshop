@@ -1,8 +1,8 @@
-package com.toedter.workshops.springrest.lab4.movie;
+package com.toedter.workshops.springrest.lab5.movie;
 
 import com.toedter.spring.hateoas.jsonapi.JsonApiModelBuilder;
-import com.toedter.workshops.springrest.lab4.director.Director;
-import com.toedter.workshops.springrest.lab4.director.DirectorRepository;
+import com.toedter.workshops.springrest.lab5.director.Director;
+import com.toedter.workshops.springrest.lab5.director.DirectorRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

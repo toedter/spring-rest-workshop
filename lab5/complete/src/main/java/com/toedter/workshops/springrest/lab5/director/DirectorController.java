@@ -1,7 +1,7 @@
-package com.toedter.workshops.springrest.lab4.director;
+package com.toedter.workshops.springrest.lab5.director;
 
 import com.toedter.spring.hateoas.jsonapi.JsonApiModelBuilder;
-import com.toedter.workshops.springrest.lab4.movie.MovieRepository;
+import com.toedter.workshops.springrest.lab5.movie.MovieRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.hateoas.Link;
