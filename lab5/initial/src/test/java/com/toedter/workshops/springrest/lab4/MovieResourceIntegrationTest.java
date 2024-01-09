@@ -2,7 +2,6 @@ package com.toedter.workshops.springrest.lab4;
 
 import org.hamcrest.CoreMatchers;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -39,7 +38,6 @@ public class MovieResourceIntegrationTest {
     }
 
     @Test
-    @Disabled
     public void shouldGetMovies() throws Exception {
         MockHttpServletResponse response2 = mvc.perform(get("/api/movies")).
                 andDo(MockMvcResultHandlers.print()).
