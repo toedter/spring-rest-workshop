@@ -3,6 +3,6 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          jwk-set-uri: http://localhost:9000/auth/realms/movies/protocol/openid-connect/certs
-          issuer-uri: http://localhost:9000/auth/realms/movies
+          jwk-set-uri: http://localhost:9000/oauth2/jwks
+          issuer-uri: http://localhost:9000
           audiences: movies-audience

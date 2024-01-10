@@ -1,0 +1,42 @@
+server:
+  port: 9000
+
+logging:
+  level:
+    org.springframework.security: trace
+
+spring:
+  security:
+    user:
+      name: user
+      password: password
+    oauth2:
+      authorizationserver:
+        client:
+          movie-client:
+            registration:
+              client-id: "movie-client"
+              client-secret: "{noop}secret"
+              client-authentication-methods:
+                - "client_secret_post"
+              authorization-grant-types:
+                - "client_credentials"
+              scopes:
+                - "openid"
+                - "profile"
+                - "movies.read"
+            require-authorization-consent: true
+          movie-admin-client:
+            registration:
+              client-id: "movie-admin-client"
+              client-secret: "{noop}secret2"
+              client-authentication-methods:
+                - "client_secret_post"
+              authorization-grant-types:
+                - "client_credentials"
+              scopes:
+                - "openid"
+                - "profile"
+                - "movies.read"
+                - "movies.write"
+            require-authorization-consent: true
