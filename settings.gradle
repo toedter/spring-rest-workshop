@@ -18,4 +18,4 @@ include 'lab5:initial'
 include 'lab5:complete'
 include 'lab5:spring-authorization-server'
 
-rootProject.name = 'rest-spring-workshop'
+rootProject.name = 'spring-rest-workshop'
