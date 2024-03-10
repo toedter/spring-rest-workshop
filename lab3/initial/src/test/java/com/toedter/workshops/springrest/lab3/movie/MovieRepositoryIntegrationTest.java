@@ -17,13 +17,13 @@ public class MovieRepositoryIntegrationTest {
     MovieRepository movieRepository;
 
     @Test
-    public void shouldFindsAllMovies() {
+    public void shouldFindAllMovies() {
         Iterable<Movie> movies = movieRepository.findAll();
         assertThat(movies, is(not(emptyIterable())));
     }
 
     @Test
-    public void shouldCreatesNewMovie() {
+    public void shouldCreateNewMovie() {
         long before = movieRepository.count();
 
         Movie movie = movieRepository.save(createMovie());

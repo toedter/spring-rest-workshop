@@ -1,6 +1,5 @@
 package com.toedter.workshops.springrest.lab5.security;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -11,7 +10,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class OAuth2ResourceServerSecurityConfiguration {
 
-    @Value("${spring.security.oauth2.resourceserver.jwt.jwk-set-uri}")
+    // @Value("${spring.security.oauth2.resourceserver.jwt.jwk-set-uri}")
     String jwkSetUri;
 
     @Bean
