@@ -10,9 +10,6 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class OAuth2ResourceServerSecurityConfiguration {
 
-    // @Value("${spring.security.oauth2.resourceserver.jwt.jwk-set-uri}")
-    String jwkSetUri;
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         // add security configuration

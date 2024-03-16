@@ -10,14 +10,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class HelloControllerIntegrationTest {
+class HelloControllerIntegrationTest {
 
-	@Autowired
-	private TestRestTemplate restTemplate;
+    @Autowired
+    private TestRestTemplate restTemplate;
 
-	@Test
-	public void shouldGetGreeting() {
-		ResponseEntity<String> response = restTemplate.getForEntity("/", String.class);
-		assertThat(response.getBody()).isEqualTo(HelloController.LAB1_GREETINGS_FROM_SPRING_BOOT);
-	}
+    @Test
+    void shouldGetGreeting() {
+        ResponseEntity<String> response = restTemplate.getForEntity("/", String.class);
+        assertThat(response.getBody()).isEqualTo(HelloController.LAB1_GREETINGS_FROM_SPRING_BOOT);
+    }
 }

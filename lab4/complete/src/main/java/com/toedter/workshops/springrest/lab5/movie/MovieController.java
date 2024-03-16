@@ -118,7 +118,7 @@ public class MovieController {
         }
         movieRepository.save(movie);
 
-        final RepresentationModel<?> movieRepresentationModel = movieModelAssembler.toModel(movie,false);
+        final RepresentationModel<?> movieRepresentationModel = movieModelAssembler.toModel(movie, false);
 
         return movieRepresentationModel
                 .getLink(IanaLinkRelations.SELF)

@@ -30,27 +30,27 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 @RequestMapping(value = "/api", produces = HAL_FORMS_JSON_VALUE)
 public class RootController {
 
-	public static final String MOVIES = "movies";
-	public static final String DIRECTORS = "directors";
+    public static final String MOVIES = "movies";
+    public static final String DIRECTORS = "directors";
 
-	@GetMapping
+    @GetMapping
     ResponseEntity<RepresentationModel<?>> root() {
 
-		RepresentationModel<?> resourceSupport = new RepresentationModel<>();
+        RepresentationModel<?> resourceSupport = new RepresentationModel<>();
 
-		resourceSupport.add(linkTo(methodOn(RootController.class).root()).withSelfRel());
+        resourceSupport.add(linkTo(methodOn(RootController.class).root()).withSelfRel());
 
-		Link moviesLink = linkTo(MovieController.class).slash(MOVIES).withRel(MOVIES);
-		Link templatedMoviesLink = Link.of(moviesLink.getHref() + "{?page,size}").withRel(MOVIES);
+        Link moviesLink = linkTo(MovieController.class).slash(MOVIES).withRel(MOVIES);
+        Link templatedMoviesLink = Link.of(moviesLink.getHref() + "{?page,size}").withRel(MOVIES);
 
-		resourceSupport.add(templatedMoviesLink);
+        resourceSupport.add(templatedMoviesLink);
 
-		Link directorsLink = linkTo(MovieController.class).slash(DIRECTORS).withRel(DIRECTORS);
-		Link templatedDirectorsLink = Link.of(directorsLink.getHref() + "{?page,size}").withRel(DIRECTORS);
+        Link directorsLink = linkTo(MovieController.class).slash(DIRECTORS).withRel(DIRECTORS);
+        Link templatedDirectorsLink = Link.of(directorsLink.getHref() + "{?page,size}").withRel(DIRECTORS);
 
-		resourceSupport.add(templatedDirectorsLink);
+        resourceSupport.add(templatedDirectorsLink);
 
-		return ResponseEntity.ok(resourceSupport);
-	}
+        return ResponseEntity.ok(resourceSupport);
+    }
 
 }

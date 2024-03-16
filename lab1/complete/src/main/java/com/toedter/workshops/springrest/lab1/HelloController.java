@@ -12,5 +12,5 @@ public class HelloController {
     public String index() {
         return LAB1_GREETINGS_FROM_SPRING_BOOT;
     }
-    
+
 }

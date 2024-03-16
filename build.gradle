@@ -8,7 +8,7 @@ allprojects {
 
     apply plugin: 'idea'
     apply plugin: 'eclipse'
-    
+
     repositories {
         mavenCentral()
         maven { url 'https://repo.spring.io/release' }

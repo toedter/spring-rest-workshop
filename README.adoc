@@ -1,7 +1,7 @@
 = Workshop: Bootiful REST Services with Spring
 
-image:https://github.com/toedter/rest-hypermedia-spring-workshop/workflows/Build/badge.svg["build", link="https://github.com/toedter/rest-hypermedia-spring-workshop/actions"]
-image:http://img.shields.io/badge/license-MIT-blue.svg["MIT", link="http://toedter.mit-license.org"]
+image:https://github.com/toedter/rest-hypermedia-spring-workshop/workflows/Build/badge.svg["build",link="https://github.com/toedter/rest-hypermedia-spring-workshop/actions"]
+image:http://img.shields.io/badge/license-MIT-blue.svg["MIT",link="http://toedter.mit-license.org"]
 
 This is workshop material for _Bootiful REST Servives with Spring_.
 

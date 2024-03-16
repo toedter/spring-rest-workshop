@@ -131,7 +131,7 @@ public class MovieController {
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
-    
+
     @GetMapping("/movies/{id}/directors")
     public ResponseEntity<CollectionModel<Director>> findDirectors(@PathVariable Long id) {
 

@@ -12,15 +12,15 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(HelloController.class)
-public class HelloControllerTest {
+class HelloControllerTest {
 
     @Autowired
     private MockMvc mockMVC;
 
     @Test
-    public void shouldGetGreeting() throws Exception {
+    void shouldGetGreeting() throws Exception {
         mockMVC.perform(MockMvcRequestBuilders.get("/")
-                .accept(MediaType.APPLICATION_JSON))
+                        .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().string(equalTo(HelloController.LAB1_GREETINGS_FROM_SPRING_BOOT)));
     }

@@ -66,7 +66,7 @@ public class MovieController {
         List<? extends RepresentationModel<?>> movieResources =
                 StreamSupport.stream(pagedResult.spliterator(), false)
                         .map((Movie movie1) -> movieModelAssembler.toModel(movie1, false))
-                        .collect(Collectors.toList());
+                        .toList();
 
         final Affordance newMovieAffordance =
                 afford(methodOn(MovieController.class).newMovie(null));
@@ -118,7 +118,7 @@ public class MovieController {
         }
         movieRepository.save(movie);
 
-        final RepresentationModel<?> movieRepresentationModel = movieModelAssembler.toModel(movie,false);
+        final RepresentationModel<?> movieRepresentationModel = movieModelAssembler.toModel(movie, false);
 
         return movieRepresentationModel
                 .getLink(IanaLinkRelations.SELF)

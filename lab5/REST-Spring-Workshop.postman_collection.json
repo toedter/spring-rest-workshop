@@ -1,331 +1,331 @@
 {
-	"info": {
-		"_postman_id": "005e4f90-25d0-4f92-a594-c4e141862f68",
-		"name": "Spring-Workshop",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "19187624"
-	},
-	"item": [
-		{
-			"name": "Keycloak",
-			"item": [
-				{
-					"name": "KeyCloak OpenId Configuration",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:9000/auth/realms/movies/.well-known/openid-configuration",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "9000",
-							"path": [
-								"auth",
-								"realms",
-								"movies",
-								".well-known",
-								"openid-configuration"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get KeyCloak Movie User Token",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "client_id",
-									"value": "movie-client",
-									"type": "text"
-								},
-								{
-									"key": "client_secret",
-									"value": "Nfe6KauRMtTG28g75HX9rpWIgasYZ5GT",
-									"type": "text"
-								},
-								{
-									"key": "scope",
-									"value": "*",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "grant_type",
-									"value": "client_credentials",
-									"type": "text"
-								},
-								{
-									"key": "token_format",
-									"value": "jwt",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "audience",
-									"value": "movies-audience",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "http://localhost:9000/auth/realms/movies/protocol/openid-connect/token",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "9000",
-							"path": [
-								"auth",
-								"realms",
-								"movies",
-								"protocol",
-								"openid-connect",
-								"token"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get KeyCloak Movie Admin Token",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "client_id",
-									"value": "movie-admin-client",
-									"type": "text"
-								},
-								{
-									"key": "client_secret",
-									"value": "NycSdhk4sLbNCUmIVKhtqvBfDzz7q9oB",
-									"type": "text"
-								},
-								{
-									"key": "scope",
-									"value": "*",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "grant_type",
-									"value": "client_credentials",
-									"type": "text"
-								},
-								{
-									"key": "token_format",
-									"value": "jwt",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "audience",
-									"value": "movies-audience",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "http://localhost:9000/auth/realms/movies/protocol/openid-connect/token",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "9000",
-							"path": [
-								"auth",
-								"realms",
-								"movies",
-								"protocol",
-								"openid-connect",
-								"token"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Spring Authorization Server",
-			"item": [
-				{
-					"name": "Spring Authorization Server OpenId Configuration",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:9000/.well-known/openid-configuration",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "9000",
-							"path": [
-								".well-known",
-								"openid-configuration"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get SAS Movie User Token",
-					"protocolProfileBehavior": {
-						"disabledSystemHeaders": {}
-					},
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "client_id",
-									"value": "movie-client",
-									"type": "text"
-								},
-								{
-									"key": "client_secret",
-									"value": "secret",
-									"type": "text"
-								},
-								{
-									"key": "scope",
-									"value": "movies.read",
-									"type": "text"
-								},
-								{
-									"key": "grant_type",
-									"value": "client_credentials",
-									"type": "text"
-								},
-								{
-									"key": "token_format",
-									"value": "jwt",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "audience",
-									"value": "https://horizon.siemens.com",
-									"type": "text",
-									"disabled": true
-								}
-							]
-						},
-						"url": {
-							"raw": "http://localhost:9000/oauth2/token",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "9000",
-							"path": [
-								"oauth2",
-								"token"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get SAS Movie Admin Token",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "client_id",
-									"value": "movie-admin-client",
-									"type": "text"
-								},
-								{
-									"key": "client_secret",
-									"value": "secret2",
-									"type": "text"
-								},
-								{
-									"key": "scope",
-									"value": "movies.read movies.write",
-									"type": "text"
-								},
-								{
-									"key": "grant_type",
-									"value": "client_credentials",
-									"type": "text"
-								},
-								{
-									"key": "token_format",
-									"value": "jwt",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "audience",
-									"value": "https://horizon.siemens.com",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "http://localhost:9000/oauth2/token",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "9000",
-							"path": [
-								"oauth2",
-								"token"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Get Movies",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJraWQiOiI3ODE2NjlmOC0yMGJhLTRlMTAtYjU3ZC0zMzE1ZDc4YWExYzkiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJtb3ZpZS1jbGllbnQiLCJhdWQiOiJtb3ZpZXMtYXVkaWVuY2UiLCJuYmYiOjE3MTAwNjgwNzEsInNjb3BlIjpbIm1vdmllcy5yZWFkIl0sImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6OTAwMCIsImV4cCI6MTcxMDA2ODM3MSwiaWF0IjoxNzEwMDY4MDcxLCJqdGkiOiJhYjYwMWYwOS00MmQzLTQwYTEtYjkzMC05MDA5OTE2NTU3ZDUifQ.F6skPVgtlsb-48hDFuAfwwAD3ZXOy1-r4p_N3wlsqHS9NGyXSNcY-0KzD-wj0b-eU_9ERBaND7J_-d4VwXCw9wJ4Q9102FUmtebo3KORDESfl17yljcKsWoNVkLsGtVgvTlzcdQaDDbTs6vMO6h_jj0EgP9e-8Ex-vUcA8Js4PwSZVj6Il2w7kUaZyQS-TLx-FH2cFGoEBtp4MDL3x-1y4SQbJ548O9D1ZLCWeMRGbFjJ1FOcxFmGPlrUvq2h9LukXdj9eshROZIThSHsnwZX7-vjobQm2Ex74m9PBC5paWzTy28rtCICIceet9cC6Zy_kbx2IMead7t6d_L7UiZQQ",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/api/movies",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"movies"
-					]
-				}
-			},
-			"response": []
-		}
-	]
+  "info": {
+    "_postman_id": "005e4f90-25d0-4f92-a594-c4e141862f68",
+    "name": "Spring-Workshop",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "19187624"
+  },
+  "item": [
+    {
+      "name": "Keycloak",
+      "item": [
+        {
+          "name": "KeyCloak OpenId Configuration",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:9000/auth/realms/movies/.well-known/openid-configuration",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9000",
+              "path": [
+                "auth",
+                "realms",
+                "movies",
+                ".well-known",
+                "openid-configuration"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get KeyCloak Movie User Token",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "client_id",
+                  "value": "movie-client",
+                  "type": "text"
+                },
+                {
+                  "key": "client_secret",
+                  "value": "Nfe6KauRMtTG28g75HX9rpWIgasYZ5GT",
+                  "type": "text"
+                },
+                {
+                  "key": "scope",
+                  "value": "*",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials",
+                  "type": "text"
+                },
+                {
+                  "key": "token_format",
+                  "value": "jwt",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "audience",
+                  "value": "movies-audience",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:9000/auth/realms/movies/protocol/openid-connect/token",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9000",
+              "path": [
+                "auth",
+                "realms",
+                "movies",
+                "protocol",
+                "openid-connect",
+                "token"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get KeyCloak Movie Admin Token",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "client_id",
+                  "value": "movie-admin-client",
+                  "type": "text"
+                },
+                {
+                  "key": "client_secret",
+                  "value": "NycSdhk4sLbNCUmIVKhtqvBfDzz7q9oB",
+                  "type": "text"
+                },
+                {
+                  "key": "scope",
+                  "value": "*",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials",
+                  "type": "text"
+                },
+                {
+                  "key": "token_format",
+                  "value": "jwt",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "audience",
+                  "value": "movies-audience",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:9000/auth/realms/movies/protocol/openid-connect/token",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9000",
+              "path": [
+                "auth",
+                "realms",
+                "movies",
+                "protocol",
+                "openid-connect",
+                "token"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Spring Authorization Server",
+      "item": [
+        {
+          "name": "Spring Authorization Server OpenId Configuration",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:9000/.well-known/openid-configuration",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9000",
+              "path": [
+                ".well-known",
+                "openid-configuration"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get SAS Movie User Token",
+          "protocolProfileBehavior": {
+            "disabledSystemHeaders": {}
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "client_id",
+                  "value": "movie-client",
+                  "type": "text"
+                },
+                {
+                  "key": "client_secret",
+                  "value": "secret",
+                  "type": "text"
+                },
+                {
+                  "key": "scope",
+                  "value": "movies.read",
+                  "type": "text"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials",
+                  "type": "text"
+                },
+                {
+                  "key": "token_format",
+                  "value": "jwt",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "audience",
+                  "value": "https://horizon.siemens.com",
+                  "type": "text",
+                  "disabled": true
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:9000/oauth2/token",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9000",
+              "path": [
+                "oauth2",
+                "token"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get SAS Movie Admin Token",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "client_id",
+                  "value": "movie-admin-client",
+                  "type": "text"
+                },
+                {
+                  "key": "client_secret",
+                  "value": "secret2",
+                  "type": "text"
+                },
+                {
+                  "key": "scope",
+                  "value": "movies.read movies.write",
+                  "type": "text"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials",
+                  "type": "text"
+                },
+                {
+                  "key": "token_format",
+                  "value": "jwt",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "audience",
+                  "value": "https://horizon.siemens.com",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:9000/oauth2/token",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9000",
+              "path": [
+                "oauth2",
+                "token"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Get Movies",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJraWQiOiI3ODE2NjlmOC0yMGJhLTRlMTAtYjU3ZC0zMzE1ZDc4YWExYzkiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJtb3ZpZS1jbGllbnQiLCJhdWQiOiJtb3ZpZXMtYXVkaWVuY2UiLCJuYmYiOjE3MTAwNjgwNzEsInNjb3BlIjpbIm1vdmllcy5yZWFkIl0sImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6OTAwMCIsImV4cCI6MTcxMDA2ODM3MSwiaWF0IjoxNzEwMDY4MDcxLCJqdGkiOiJhYjYwMWYwOS00MmQzLTQwYTEtYjkzMC05MDA5OTE2NTU3ZDUifQ.F6skPVgtlsb-48hDFuAfwwAD3ZXOy1-r4p_N3wlsqHS9NGyXSNcY-0KzD-wj0b-eU_9ERBaND7J_-d4VwXCw9wJ4Q9102FUmtebo3KORDESfl17yljcKsWoNVkLsGtVgvTlzcdQaDDbTs6vMO6h_jj0EgP9e-8Ex-vUcA8Js4PwSZVj6Il2w7kUaZyQS-TLx-FH2cFGoEBtp4MDL3x-1y4SQbJ548O9D1ZLCWeMRGbFjJ1FOcxFmGPlrUvq2h9LukXdj9eshROZIThSHsnwZX7-vjobQm2Ex74m9PBC5paWzTy28rtCICIceet9cC6Zy_kbx2IMead7t6d_L7UiZQQ",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/movies",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "movies"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
 }

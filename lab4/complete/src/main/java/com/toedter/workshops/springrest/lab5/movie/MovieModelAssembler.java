@@ -22,7 +22,6 @@ class MovieModelAssembler {
 
     public RepresentationModel<?> toModel(Movie movie, boolean withAffordances) {
         Link selfLink = linkTo(methodOn(MovieController.class).findOne(movie.getId())).withSelfRel();
-        Link directorsLink = linkTo(methodOn(MovieController.class).findDirectors(movie.getId())).withRel("directors");
 
         String relationshipSelfLink = selfLink.getHref() + "/relationships/" + DIRECTORS;
         String relationshipRelatedLink = selfLink.getHref() + "/" + DIRECTORS;
@@ -34,7 +33,7 @@ class MovieModelAssembler {
                 afford(methodOn(MovieController.class).deleteMovie(movie.getId()));
 
         Link link;
-        if(withAffordances) {
+        if (withAffordances) {
             link = selfLink.andAffordance(updatePartiallyAffordance).andAffordance(deleteAffordance);
         } else {
             link = selfLink;
