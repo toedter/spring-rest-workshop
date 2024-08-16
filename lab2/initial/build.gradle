@@ -9,7 +9,7 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-starter-data-rest"
     implementation "com.jayway.jsonpath:json-path"
     implementation 'org.springframework.data:spring-data-rest-hal-explorer'
-    implementation 'org.webjars:hal-explorer:1.1.0'
+    implementation 'org.webjars:hal-explorer:1.2.2'
 
     runtimeOnly 'org.hsqldb:hsqldb'
 
