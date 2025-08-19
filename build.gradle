@@ -16,12 +16,6 @@ allprojects {
         maven { url 'https://repo.spring.io/snapshot' }
     }
 
-    task cleanJS() {
-        doLast {
-            delete 'node_modules'
-        }
-    }
-
     idea {
         module {
             excludeDirs += file('node_modules')
