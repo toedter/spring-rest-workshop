@@ -13,22 +13,22 @@ import static org.hamcrest.Matchers.iterableWithSize;
 import static org.hamcrest.Matchers.not;
 
 @SpringBootTest
-public class MovieRepositoryIntegrationTest {
+class MovieRepositoryIntegrationTest {
 
     @Autowired
     MovieRepository movieRepository;
 
     @Test
-    public void shouldFindAllMovies() {
+    void shouldFindAllMovies() {
         Iterable<Movie> movies = movieRepository.findAll();
         assertThat(movies, is(not(emptyIterable())));
     }
 
     @Test
-    public void shouldCreateNewMovie() {
+    void shouldCreateNewMovie() {
         long before = movieRepository.count();
 
-        Movie movie = movieRepository.save(createMovie());
+        movieRepository.save(createMovie());
 
         Iterable<Movie> result = movieRepository.findAll();
         assertThat(result, is(iterableWithSize((int) (before + 1))));

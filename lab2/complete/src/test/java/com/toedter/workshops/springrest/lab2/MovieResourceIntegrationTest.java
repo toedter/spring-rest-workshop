@@ -17,13 +17,14 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.filter.ShallowEtagHeaderFilter;
 
 import static org.springframework.hateoas.MediaTypes.HAL_JSON_VALUE;
+import static org.springframework.hateoas.MediaTypes.VND_HAL_JSON_VALUE;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
-public class MovieResourceIntegrationTest {
+class MovieResourceIntegrationTest {
 
     @Autowired
     protected WebApplicationContext context;
@@ -34,18 +35,18 @@ public class MovieResourceIntegrationTest {
     protected MockMvc mvc;
 
     @BeforeEach
-    public void before() {
+    void before() {
         mvc = MockMvcBuilders.webAppContextSetup(context).
                 addFilter(new ShallowEtagHeaderFilter()).
                 build();
     }
 
     @Test
-    public void shouldGetMovies() throws Exception {
+    void shouldGetMovies() throws Exception {
         MockHttpServletResponse response2 = mvc.perform(get("/api/movies")).
                 andDo(MockMvcResultHandlers.print()).
                 andExpect(status().isOk()).
-                andExpect(content().contentType(HAL_JSON_VALUE)).
+                andExpect(content().contentType(VND_HAL_JSON_VALUE)).
                 andExpect(jsonPath("_embedded.movies", CoreMatchers.notNullValue())).
                 andReturn().
                 getResponse();
@@ -56,7 +57,7 @@ public class MovieResourceIntegrationTest {
 
         mvc.perform(get(href)).
                 andDo(MockMvcResultHandlers.print()).
-                andExpect(content().contentTypeCompatibleWith(MediaTypes.HAL_JSON)).
+                andExpect(content().contentTypeCompatibleWith(MediaTypes.VND_HAL_JSON)).
                 andExpect(jsonPath("_embedded.movies", CoreMatchers.notNullValue()));
     }
 }

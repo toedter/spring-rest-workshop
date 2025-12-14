@@ -1,23 +1,28 @@
 package com.toedter.workshops.springrest.lab2;
 
 import com.toedter.workshops.springrest.lab2.movie.Movie;
+import com.toedter.workshops.springrest.lab2.movie.MovieRepository;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
+
 @SpringBootTest
-public class MovieRepositoryIntegrationTest {
+class MovieRepositoryIntegrationTest {
 
 //    @Autowired
 //    MovieRepository movieRepository;
 
     @Test
-    public void shouldFindAllMovies() {
+    void shouldFindAllMovies() {
 //        Iterable<Movie> movies = movieRepository.findAll();
 //        assertThat(movies, is(not(emptyIterable())));
     }
 
     @Test
-    public void shouldCreateNewMovie() {
+    void shouldCreateNewMovie() {
 //        long before = movieRepository.count();
 //
 //        Movie movie = movieRepository.save(createMovie());

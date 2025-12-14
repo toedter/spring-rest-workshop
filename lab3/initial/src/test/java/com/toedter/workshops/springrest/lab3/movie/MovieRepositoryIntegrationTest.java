@@ -26,7 +26,7 @@ public class MovieRepositoryIntegrationTest {
     public void shouldCreateNewMovie() {
         long before = movieRepository.count();
 
-        Movie movie = movieRepository.save(createMovie());
+        movieRepository.save(createMovie());
 
         Iterable<Movie> result = movieRepository.findAll();
         assertThat(result, is(iterableWithSize((int) (before + 1))));

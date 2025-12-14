@@ -19,7 +19,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
-public class MovieResourceIntegrationTest {
+class MovieResourceIntegrationTest {
 
     @Autowired
     protected WebApplicationContext context;
@@ -30,7 +30,7 @@ public class MovieResourceIntegrationTest {
     protected MockMvc mvc;
 
     @BeforeEach
-    public void before() {
+    void before() {
         mvc = MockMvcBuilders.webAppContextSetup(context).
                 addFilter(new ShallowEtagHeaderFilter()).
                 build();
@@ -38,8 +38,8 @@ public class MovieResourceIntegrationTest {
 
     // Add security
     // @Test
-    public void shouldGetMovies() throws Exception {
-        MockHttpServletResponse response2 = mvc.perform(get("/api/movies")).
+    void shouldGetMovies() throws Exception {
+        mvc.perform(get("/api/movies")).
                 andDo(MockMvcResultHandlers.print()).
                 andExpect(status().isOk()).
                 andExpect(content().contentType(JSON_API_VALUE)).

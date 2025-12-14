@@ -16,12 +16,12 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-hateoas'
     implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
-    implementation 'com.toedter:spring-hateoas-jsonapi:2.1.4'
+    implementation 'com.toedter:spring-hateoas-jsonapi:3.0.0'
     implementation 'javax.validation:validation-api:2.0.1.Final'
 
     runtimeOnly 'org.hsqldb:hsqldb'
 
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
     testImplementation 'org.springframework.security:spring-security-test'
 }
 
