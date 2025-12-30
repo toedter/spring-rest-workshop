@@ -8,9 +8,9 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-starter-data-jpa"
     implementation "org.springframework.boot:spring-boot-starter-data-rest"
     implementation "com.jayway.jsonpath:json-path"
-    // implementation 'org.springframework.data:spring-data-rest-hal-explorer'
-    implementation 'org.webjars:hal-explorer:1.2.3'
 
+    // runtimeOnly 'org.springframework.data:spring-data-rest-hal-explorer'
+    runtimeOnly 'org.webjars:hal-explorer:2.0.0'
     runtimeOnly 'org.hsqldb:hsqldb'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'

@@ -17,7 +17,3 @@ dependencies {
     testImplementation "org.junit.jupiter:junit-jupiter"
     testImplementation "net.sourceforge.htmlunit:htmlunit"
 }
-
-tasks.named("test") {
-    useJUnitPlatform()
-}
