@@ -9,6 +9,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-hateoas'
     implementation 'javax.validation:validation-api:2.0.1.Final'
 
+    runtimeOnly 'org.webjars:hal-explorer:2.0.0'
     runtimeOnly 'org.hsqldb:hsqldb'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
