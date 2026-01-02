@@ -43,7 +43,7 @@ public class MovieController {
     }
 
     @PostMapping("/movies")
-    public ResponseEntity<EntityModel<Movie>> newMovie(@RequestBody EntityModel<Movie> movieModel) {
+    public ResponseEntity<EntityModel<Movie>> newMovie(@RequestBody Movie movie) {
         // save the movie in the movie repository
         return null;
     }
@@ -64,7 +64,7 @@ public class MovieController {
 
     @PatchMapping("/movies/{id}")
     public ResponseEntity<?> updateMoviePartially(
-            @RequestBody EntityModel<Movie> movieModel, @PathVariable Long id) {
+            @RequestBody Movie movie, @PathVariable Long id) {
         // change a movie partially
         return null;
     }

@@ -32,12 +32,10 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-import static java.lang.Thread.sleep;
 import static org.springframework.hateoas.MediaTypes.HAL_FORMS_JSON_VALUE;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.afford;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
-import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
 @RequestMapping(value = "/api", produces = HAL_FORMS_JSON_VALUE)
@@ -88,10 +86,8 @@ public class MovieController {
         return ResponseEntity.ok(pagedModel);
     }
 
-    @PostMapping(value = "/movies", consumes = {APPLICATION_JSON_VALUE, HAL_FORMS_JSON_VALUE})
-    public ResponseEntity<EntityModel<Movie>> newMovie(@RequestBody EntityModel<Movie> movieModel) {
-        Movie movie = movieModel.getContent();
-        assert movie != null;
+    @PostMapping(value = "/movies")
+    public ResponseEntity<EntityModel<Movie>> newMovie(@RequestBody Movie movie) {
         movieRepository.save(movie);
 
         List<Director> directorsWithIds = movie.getDirectors();
@@ -143,12 +139,11 @@ public class MovieController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PatchMapping(value = "/movies/{id}", consumes = {APPLICATION_JSON_VALUE, HAL_FORMS_JSON_VALUE})
+    @PatchMapping("/movies/{id}")
     public ResponseEntity<?> updateMoviePartially(
-            @RequestBody EntityModel<Movie> movieModel, @PathVariable Long id) {
+            @RequestBody Movie movie, @PathVariable Long id) {
 
         Movie existingMovie = movieRepository.findById(id).orElseThrow(() -> new EntityNotFoundException(id.toString()));
-        Movie movie = movieModel.getContent();
         existingMovie.update(movie);
 
         movieRepository.save(existingMovie);
