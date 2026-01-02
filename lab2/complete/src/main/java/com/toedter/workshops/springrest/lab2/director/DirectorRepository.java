@@ -1,8 +1,7 @@
 package com.toedter.workshops.springrest.lab2.director;
 
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface DirectorRepository extends CrudRepository<Director, Long>, PagingAndSortingRepository<Director, Long> {
+public interface DirectorRepository extends JpaRepository<Director, Long> {
     Director findByName(String name);
 }
