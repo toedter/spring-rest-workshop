@@ -1,6 +1,7 @@
 package com.toedter.workshops.springrest.lab3.movie;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.toedter.workshops.springrest.lab3.director.Director;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -19,6 +20,7 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @Relation(collectionRelation = "movies")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Movie {
     @Id
     @GeneratedValue
@@ -27,10 +29,10 @@ public class Movie {
 
     @NotNull
     private String title;
-    private long year;
+    private Long year;
     private String imdbId;
-    private double rating;
-    private int rank;
+    private Double rating;
+    private Integer rank;
     @JsonIgnore
     private String thumb;
 
@@ -38,7 +40,7 @@ public class Movie {
     @JsonIgnore
     private List<Director> directors = new ArrayList<>();
 
-    public Movie(String imdbId, String title, long year, double rating, int rank, String thumb) {
+    public Movie(String imdbId, String title, Long year, Double rating, Integer rank, String thumb) {
         this.imdbId = imdbId;
         this.title = title;
         this.year = year;
@@ -66,13 +68,13 @@ public class Movie {
         if (updatedMovie.imdbId != null) {
             this.imdbId = updatedMovie.imdbId;
         }
-        if (updatedMovie.year != 0) {
+        if (updatedMovie.year != null) {
             this.year = updatedMovie.year;
         }
-        if (updatedMovie.rating != 0) {
+        if (updatedMovie.rating != null) {
             this.rating = updatedMovie.rating;
         }
-        if (updatedMovie.rank != 0) {
+        if (updatedMovie.rank != null) {
             this.rank = updatedMovie.rank;
         }
     }

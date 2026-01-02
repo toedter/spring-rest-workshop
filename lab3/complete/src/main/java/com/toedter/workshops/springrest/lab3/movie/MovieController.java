@@ -37,6 +37,7 @@ import static org.springframework.hateoas.MediaTypes.HAL_FORMS_JSON_VALUE;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.afford;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
 @RequestMapping(value = "/api", produces = HAL_FORMS_JSON_VALUE)
@@ -87,7 +88,7 @@ public class MovieController {
         return ResponseEntity.ok(pagedModel);
     }
 
-    @PostMapping("/movies")
+    @PostMapping(value = "/movies", consumes = {APPLICATION_JSON_VALUE, HAL_FORMS_JSON_VALUE})
     public ResponseEntity<EntityModel<Movie>> newMovie(@RequestBody EntityModel<Movie> movieModel) {
         Movie movie = movieModel.getContent();
         assert movie != null;
@@ -142,7 +143,7 @@ public class MovieController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PatchMapping("/movies/{id}")
+    @PatchMapping(value = "/movies/{id}", consumes = {APPLICATION_JSON_VALUE, HAL_FORMS_JSON_VALUE})
     public ResponseEntity<?> updateMoviePartially(
             @RequestBody EntityModel<Movie> movieModel, @PathVariable Long id) {
 

@@ -1,6 +1,7 @@
 package com.toedter.workshops.springrest.lab2.movie;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.toedter.workshops.springrest.lab2.director.Director;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -18,6 +19,7 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @Relation(collectionRelation = "movies")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Movie {
     @Id
     @GeneratedValue
@@ -25,17 +27,17 @@ public class Movie {
     private Long id;
 
     private String title;
-    private long year;
+    private Long year;
     private String imdbId;
-    private double rating;
-    private int rank;
+    private Double rating;
+    private Integer rank;
     @JsonIgnore
     private String thumb;
 
     @ManyToMany(mappedBy = "movies", fetch = FetchType.EAGER)
     private List<Director> directors = new ArrayList<>();
 
-    public Movie(String imdbId, String title, long year, double rating, int rank, String thumb) {
+    public Movie(String imdbId, String title, Long year, Double rating, Integer rank, String thumb) {
         this.imdbId = imdbId;
         this.title = title;
         this.year = year;
