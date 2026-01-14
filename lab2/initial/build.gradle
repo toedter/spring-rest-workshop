@@ -10,7 +10,7 @@ dependencies {
     implementation "com.jayway.jsonpath:json-path"
     implementation 'org.springframework.data:spring-data-rest-hal-explorer'
 
-    runtimeOnly 'org.webjars:hal-explorer:2.1.0'
+    runtimeOnly 'org.webjars:hal-explorer:2.2.1'
     runtimeOnly 'org.hsqldb:hsqldb'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
